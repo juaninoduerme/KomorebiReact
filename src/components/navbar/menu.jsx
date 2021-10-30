@@ -1,22 +1,10 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-
-function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
+import Box from '@mui/material/Box';
 
 export default function MenuKomorebi() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState('one');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -24,13 +12,20 @@ export default function MenuKomorebi() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Tabs value={value} onChange={handleChange}>
-        <LinkTab label="Todo" href="#" />
-        <LinkTab label="Aromaterapia" href="#" />
-        <LinkTab label="Higiene" href="#" />
-        <LinkTab label="Baños Divertidos" href="#" />
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        textColor="secondary"
+        indicatorColor="secondary"
+        aria-label="secondary tabs example"
+      >
+        <Tab value="one" label="Todo" />
+        <Tab value="two" label="Aromaterapia" />
+        <Tab value="three" label="Baños Divertidos" />
+        <Tab value="four" label="Higiene" />
       </Tabs>
     </Box>
   );
 }
+
 

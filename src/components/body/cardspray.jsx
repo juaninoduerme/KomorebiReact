@@ -6,14 +6,17 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+//imports propios
+import imagenSpray from '../../images/imgSpray.jpg'
+
 export default function CardSpray() {
   return (
-    <Card sx={{ maxWidth: 400, margin: '5%' }}>
+    <Card sx={{ width: 300, margin: '5%' }}>
       <CardMedia
         component="img"
         alt="Imagen con un frasco tipo spray color ámbar sobre un lienzo."
-        height="200"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        height="300"
+        image={imagenSpray}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

@@ -6,18 +6,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
+//imports propios
+import imagenVela from '../../images/imgVela.jpg'
+
 export default function CardVelaSoja() {
   return (
-    <Card sx={{ maxWidth: 400, margin: '5%' }}>
+    <Card sx={{ width: 300, margin: '5%' }}>
       <CardMedia
         component="img"
         alt="Imagen con una vela de soja dentro de un frasco de vidrio trasparente, con lavanda arriba sobre un lienzo."
-        height="200"
-        image="VELA.jpg"
+        height="300"
+        image={imagenVela}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Vela Aromaterapia
+          Vela de Soja Aromaterapia
         </Typography>
       </CardContent>
       <CardActions>

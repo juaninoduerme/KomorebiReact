@@ -7,20 +7,20 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 //imports propios
-import imagenBombon from '../../images/imgBombon.jpg'
+import imagenTag from '../../images/imgTag.jpg'
 
-export default function CardBombonSoja() {
+export default function CardTagSoja() {
   return (
-    <Card sx={{ width: 300, maxWidth: 300, margin: '5%' }}>
+    <Card sx={{ width: 300, margin: '5%' }}>
       <CardMedia
         component="img"
-        alt="Bombones en formas de flor de cera de soja apoyados entre si sobre un lienzo."
+        alt="Imagen con una vela de soja dentro de un frasco de vidrio trasparente, con lavanda arriba sobre un lienzo."
         height="300"
-        image={imagenBombon}
+        image={imagenTag}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Bombones de Soja Aromaterapia
+          Tag de Soja Aromaterapia
         </Typography>
       </CardContent>
       <CardActions>

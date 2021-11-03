@@ -123,7 +123,7 @@ export default function NavBar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+          <Badge badgeContent={17} color="error">
             <CartWidget/>
           </Badge>
         </IconButton>

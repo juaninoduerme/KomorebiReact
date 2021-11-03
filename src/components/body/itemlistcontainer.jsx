@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import CardVelaSoja from './cardvelasoja';
 import CardSpray from './cardspray';
 import CardBombonSoja from './cardbombonsoja';
+import CardTagSoja from './cardtagsoja';
 
 export default function ItemListContainer() {
   const [value, setValue] = React.useState('one');
@@ -18,6 +19,7 @@ export default function ItemListContainer() {
         <CardVelaSoja/>
         <CardSpray/>
         <CardBombonSoja/>
+        <CardTagSoja/>
     </Box>
   );
 }

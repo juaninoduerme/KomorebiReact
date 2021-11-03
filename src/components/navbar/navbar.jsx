@@ -13,10 +13,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 //Import Componente
 import MenuKomorebi from './menu';
+import CartWidget from './cartwidget';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -124,7 +124,7 @@ export default function NavBar() {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
-            <ShoppingCartIcon />
+            <CartWidget/>
           </Badge>
         </IconButton>
       </MenuItem>
@@ -184,7 +184,7 @@ export default function NavBar() {
               color="inherit"
             >
               <Badge badgeContent={17} color="error">
-                <ShoppingCartIcon />
+                <CartWidget/>
               </Badge>
             </IconButton>
             <IconButton

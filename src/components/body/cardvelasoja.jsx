@@ -5,11 +5,26 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 //imports propios
 import imagenVela from '../../images/imgVela.jpg'
+import ItemCount from './itemcount';
 
 export default function CardVelaSoja() {
+
+  const [stock, setStock] = React.useState(10); 
+  const [cartItems, setcartItems] = React.useState(0); 
+
+  const handleAddToCart = (event, orderedItems, stock) => {
+    
+    if(orderedItems <= stock)
+    {
+      setStock = stock - orderedItems;
+      setcartItems = orderedItems;
+    }
+  };  
+
   return (
     <Card sx={{ width: 300, margin: '5%' }}>
       <CardMedia
@@ -24,8 +39,12 @@ export default function CardVelaSoja() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Comprar</Button>
-        <Button size="small">Info</Button>
+        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
+          <ItemCount stock={stock} initial="1" onAdd={handleAddToCart}/>
+          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>            
+            <Button size="small">Info</Button>
+          </Box>
+        </Box>
       </CardActions>
     </Card>
   );

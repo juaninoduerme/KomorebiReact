@@ -8,12 +8,6 @@ import CardBombonSoja from './cardbombonsoja';
 import CardTagSoja from './cardtagsoja';
 
 export default function ItemListContainer() {
-  const [value, setValue] = React.useState('one');
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
         <CardVelaSoja/>

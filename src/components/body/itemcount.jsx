@@ -5,41 +5,53 @@ import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 
-export default function ItemCount(stock, initial, onAdd) {
+const ItemCount = ({stock, initial}) => {
 
-    const [orderedItems, setOrderedItems] = React.useState(1);
+    const [cartItems, setCartItems] = React.useState(initial);
 
-    const handleAddToCart = (event, orderedItems, stock) => {    
-        if(orderedItems <= stock)
+    const AddItem = () => {    
+
+        const newCartItems = cartItems + 1;
+
+        console.log(newCartItems);
+
+        if(newCartItems <= stock)
         {
-          stock = stock - orderedItems;
-        }
-    };
-
-    const handleAdd = (event, initial, stock) => {
-        console.log("Agrega");
-        if(orderedItems > stock)
-        {            
-            setOrderedItems = initial + 1;
+            setCartItems(newCartItems);
         }
     };
       
-    const handleRemove = (event, initial, stock) => {        
-        if(orderedItems < stock && orderedItems !== 1)
+    const RemoveItem = () => {   
+
+        const newCartItems = cartItems - 1;
+
+        if(newCartItems >= initial)
         {            
-            setOrderedItems = initial - 1;
+            setCartItems(newCartItems);
         }
-        console.log("Resta");
+    };
+
+    const onAdd = () => {
+        if(cartItems === 1)
+        {
+            alert(`Se agregó ${cartItems} producto al carrito.`);
+        }
+        else
+        {
+            alert(`Se agregó ${cartItems} productos al carrito.`);
+        }
     };
 
     return (
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
             <Box sx={{ height: '30px', width: '100%', display: 'flex', justifyContent: 'center' }}>
-                <RemoveCircleIcon onClick={handleRemove}/>
-                <Input defaultValue="1" value={orderedItems} inputProps={orderedItems}></Input>      
-                <AddCircleIcon onClick={handleAdd}/>        
+                <RemoveCircleIcon onClick={RemoveItem}/>
+                <Input value={cartItems}></Input>
+                <AddCircleIcon onClick={AddItem}/>        
             </Box>
-            <Button size="small" onAdd={handleAddToCart}>Añadir al Carrito</Button>
+            <Button size="small" onClick={onAdd}>Añadir al Carrito</Button>
         </Box>
     );
 }
+
+export default ItemCount;

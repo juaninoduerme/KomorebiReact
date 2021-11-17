@@ -1,19 +1,23 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 
 //imports propios
-import CardVelaSoja from './cardvelasoja';
-import CardSpray from './cardspray';
-import CardBombonSoja from './cardbombonsoja';
-import CardTagSoja from './cardtagsoja';
+import getProducts from '../../services/promesaitems'
+import ItemList from './itemlist';
 
-export default function ItemListContainer() {
+export default function ItemListContainer() {  
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts 
+    .then(response => setProducts(response))
+    .catch(error => console.log(error))
+  }, []);  
+
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-        <CardVelaSoja/>
-        <CardSpray/>
-        <CardBombonSoja/>
-        <CardTagSoja/>
+        <ItemList products={products}/>
     </Box>
   );
 }

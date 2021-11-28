@@ -3,11 +3,13 @@ import jsonData from '../JSON/datos.json';
 
 const data = jsonData;
 
-const getProducts = new Promise((resolve, reject) => {
+const idElegido = 2;
+
+const getItem = new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(data)
+      resolve(data.find(item => item.id === idElegido))
       reject("Oops! I did it again :c")
     },2000);
   });
 
-export default getProducts;
+export default getItem;

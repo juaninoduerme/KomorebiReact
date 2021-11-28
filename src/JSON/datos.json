@@ -2,6 +2,7 @@
     {
         "id": 1,
         "nombre": "Spray",
+        "categoria": "Aromaterapia",
         "imagen": "https://i.ibb.co/SnkzWDz/imgSpray.jpg",
         "alt": "Imagen con un frasco tipo spray color ámbar sobre un lienzo.",
         "precio": 600,
@@ -13,6 +14,7 @@
     {
         "id": 2,
         "nombre": "Vela de Soja",
+        "categoria": "Aromaterapia",
         "imagen": "https://i.ibb.co/59RqVLS/imgVela.jpg",
         "alt": "Imagen con una vela de soja dentro de un frasco de vidrio trasparente, con lavanda arriba sobre un lienzo.",
         "precio": 700,
@@ -24,6 +26,7 @@
     {
         "id": 3,
         "nombre": "Bombones de Soja",
+        "categoria": "Aromaterapia",
         "imagen": "https://i.ibb.co/z5dffHs/img-Bombon.jpg",
         "alt": "Bombones en formas de flor de cera de soja apoyados entre si sobre un lienzo.",
         "precio": 500,
@@ -35,6 +38,7 @@
     {
         "id": 4,
         "nombre": "Tag de Soja",
+        "categoria": "Aromaterapia",
         "imagen": "https://i.ibb.co/RvX8fhd/imgTag.jpg",
         "alt": "Imagen de dos Tag's sobre un lienzo.",
         "precio": 300,

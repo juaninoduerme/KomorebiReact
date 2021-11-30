@@ -3,14 +3,14 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 //imports propios
 import ItemCount from './itemcount';
+import { Link } from 'react-router-dom';
 
-const ItemDetail = ({id, nombre, imagen, alt, precio, descripcion, stock}) => {
+const ItemDetail = ({producto}) => {
 
     const [initial, setInitial] = useState(1);
 
@@ -18,29 +18,29 @@ const ItemDetail = ({id, nombre, imagen, alt, precio, descripcion, stock}) => {
         <Card sx={{ width: 400, maxWidth: 500, margin: '5%' }}>
             <CardMedia
                 component="img"
-                alt={alt}
+                alt={producto.alt}
                 height="300"
-                image={imagen}
+                image={producto.imagen}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {nombre}
+                    {producto.nombre}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
-                    ${precio}
+                    ${producto.precio}
                 </Typography>
                 <Typography gutterBottom variant="caption" component="div">
-                    {descripcion}
+                    {producto.descripcion}
                 </Typography>
             </CardContent>
             <CardActions>
                 <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-                    <ItemCount stock={stock} initial={initial}/>
-                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>            
-                        <Button size="small">Volver</Button>
+                    <ItemCount stock={producto.stock} initial={initial}/>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+                        <Link to="/">Volver</Link>           
                     </Box>
                     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>            
-                        <Typography gutterBottom variant="caption" component="div">Stock: {stock}</Typography>
+                        <Typography gutterBottom variant="caption" component="div">Stock: {producto.stock}</Typography>
                     </Box>
                 </Box>
             </CardActions>

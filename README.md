@@ -1,3 +1,8 @@
+# Komorebi
+
+Komorebi es una tienda virtual ecológica, sustentable y espiritual. Contamos con productos para la higiene, la diversión y la instrospección.
+Nuestro contenido a través de instagram se centra en el la salud mental y emocional, buscando crear una comunidad de amor y sanación.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

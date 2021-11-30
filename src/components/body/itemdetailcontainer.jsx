@@ -1,30 +1,27 @@
 import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
+import { useParams } from 'react-router-dom';
 
 //imports propios
-import getItem from '../../services/promesadetailitems'
 import ItemDetail from './itemdetail';
+import getProducts from '../../services/promesaitems';
 
 export default function ItemDetailContainer() {  
 
+  const {id} = useParams();
   const [item, setItem] = useState([]);
 
   useEffect(() => {
-    getItem 
-    .then(response => setItem(response))
-    .catch(error => console.log(error))
-  }, []);  
+    getProducts 
+    .then((response) => {setItem(response.find((prod) => prod.id == parseInt(id)))})
+  }, [id]);  
+
+  console.log(item);
 
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>        
       <ItemDetail
-          id={item.id}
-          nombre={item.nombre}
-          imagen={item.imagen}
-          alt={item.alt}
-          precio={item.precio}
-          descripcion={item.descripcion}
-          stock={item.stock}
+          producto={item}
       />
     </Box>
 );

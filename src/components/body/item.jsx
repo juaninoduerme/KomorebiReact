@@ -3,41 +3,41 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 //imports propios
 import ItemCount from './itemcount';
+import { Link } from 'react-router-dom';
 
-const Item = ({id, nombre, imagen, alt, precio, descripcion, stock}) => {
+const Item = ({producto}) => {
 
     const [initial, setInitial] = useState(1);
 
     return (
-        <Card sx={{ width: 400, maxWidth: 500, margin: '5%' }}>
+        <Card sx={{ width: 250, minWidth: 250, maxWidth: 250, margin: '5%' }}>
             <CardMedia
                 component="img"
-                alt={alt}
+                alt={producto.alt}
                 height="300"
-                image={imagen}
+                image={producto.imagen}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    {nombre}
+                    {producto.nombre}
                 </Typography>
                 <Typography gutterBottom variant="h6" component="div">
-                    ${precio}
+                    ${producto.precio}
                 </Typography>
                 <Typography gutterBottom variant="caption" component="div">
-                    {descripcion}
+                    {producto.descripcion}
                 </Typography>
             </CardContent>
             <CardActions>
                 <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-                    <ItemCount stock={stock} initial={initial}/>
+                    <ItemCount stock={producto.stock} initial={initial}/>
                     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>            
-                        <Button size="small">+ Info</Button>
+                        <Link to={`/item/${producto.id}`}>+ Info</Link>
                     </Box>
                 </Box>
             </CardActions>

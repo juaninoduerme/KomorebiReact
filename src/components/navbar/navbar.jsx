@@ -173,7 +173,7 @@ export default function NavBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box>
+          <Box sx={{width: '100%'}}>
             <MenuKomorebi/>
           </Box>
           <Box sx={{ flexGrow: 1 }} />

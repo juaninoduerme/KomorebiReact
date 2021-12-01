@@ -11,6 +11,7 @@ const ItemList = ({products}) => {
             {products.map(product => {
                 return(
                     <Item
+                        key={product.id}
                         producto={product}
                     />)
                 ;

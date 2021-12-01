@@ -183,9 +183,7 @@ export default function NavBar() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
-                <CartWidget/>
-              </Badge>
+              <CartWidget/>
             </IconButton>
             <IconButton
               size="large"

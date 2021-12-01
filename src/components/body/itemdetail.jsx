@@ -35,12 +35,9 @@ const ItemDetail = ({producto}) => {
             </CardContent>
             <CardActions>
                 <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-                    <ItemCount stock={producto.stock} initial={initial}/>
+                    <ItemCount stock={producto.stock} initial={initial} name={producto.nombre}/>
                     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                         <Link to="/">Volver</Link>           
-                    </Box>
-                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>            
-                        <Typography gutterBottom variant="caption" component="div">Stock: {producto.stock}</Typography>
                     </Box>
                 </Box>
             </CardActions>

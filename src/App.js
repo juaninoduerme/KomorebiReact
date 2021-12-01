@@ -1,11 +1,14 @@
+import React from 'react';
 import './App.css';
-import NavBar from './components/navbar/navbar';
-import ItemListContainer from './components/body/itemlistcontainer';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
-import ItemDetailContainer from './components/body/itemdetailcontainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React from 'react';
+
+//imports propios
+import NavBar from './components/navbar/navbar';
+import ItemListContainer from './components/body/itemlistcontainer';
+import ItemDetailContainer from './components/body/itemdetailcontainer';
+import Cart from './components/body/cart';
 
 //THEME
 const theme = createTheme({
@@ -22,8 +25,6 @@ const theme = createTheme({
 //APP
 function App() {
 
-  const [item, setItem] = React.useState();
-
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>        
@@ -33,6 +34,7 @@ function App() {
             <Route exact path="/" element={<ItemListContainer/>}/>     
             <Route path="/category/:id" element={<ItemListContainer/>}/>     
             <Route path="/item/:id" element={<ItemDetailContainer/>}/>  
+            <Route path="/cart" element={<Cart/>}/>  
           </Routes>
         </div>        
       </BrowserRouter>

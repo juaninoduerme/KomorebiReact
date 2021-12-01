@@ -1,55 +1,76 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
+import swal from '@sweetalert/with-react';
 
-const ItemCount = ({stock, initial}) => {
+const ItemCount = ({stock, initial, name}) => {
 
-    const [cartItems, setCartItems] = React.useState(initial);
+    const [stockDinamico, setStockDinamico] = useState(stock);
+    const [countItems, setCountItems] = useState(initial);
+    const [cartItems, setCartItems] = useState();
 
     const AddItem = () => {    
 
-        const newCartItems = cartItems + 1;
+        const newCountItems = countItems + 1;
 
-        console.log(newCartItems);
-
-        if(newCartItems <= stock)
+        if(newCountItems <= stockDinamico)
         {
-            setCartItems(newCartItems);
+            setCountItems(newCountItems);
         }
     };
       
     const RemoveItem = () => {   
 
-        const newCartItems = cartItems - 1;
+        const newCountItems = countItems - 1;
 
-        if(newCartItems >= initial)
+        if(newCountItems >= initial)
         {            
-            setCartItems(newCartItems);
+            setCountItems(newCountItems);
         }
     };
 
     const onAdd = () => {
-        if(cartItems === 1)
+
+        setCartItems(countItems);
+
+        if(countItems === 1)
         {
-            alert(`Se agregó ${cartItems} producto al carrito.`);
+            swal({
+                icon: 'success',
+                text: `Se agregó ${countItems} unidad del producto ${name} al carrito.`,
+                buttons: true,
+            });
+            setStockDinamico(stockDinamico - countItems);
+            setCountItems(initial);
+            
         }
         else
         {
-            alert(`Se agregó ${cartItems} productos al carrito.`);
-        }
+            swal({
+                icon: 'success',
+                text: `Se agregó ${countItems} unidades del producto ${name} al carrito.`,
+                buttons: true,
+            });
+            setStockDinamico(stockDinamico - countItems);
+            setCountItems(initial);
+        }        
     };
 
     return (
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
             <Box sx={{ height: '30px', width: '100%', display: 'flex', justifyContent: 'center' }}>
                 <RemoveCircleIcon onClick={RemoveItem}/>
-                <Input value={cartItems}></Input>
+                <Input value={countItems}></Input>
                 <AddCircleIcon onClick={AddItem}/>        
             </Box>
+            <Typography gutterBottom variant="caption" component="div">Stock: {stockDinamico}</Typography>
             <Button size="small" onClick={onAdd}>Añadir al Carrito</Button>
+            <Link to="/cart">Ir al Carrito</Link>
         </Box>
     );
 }

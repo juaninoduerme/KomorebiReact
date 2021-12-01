@@ -21,7 +21,8 @@ export default function ItemDetailContainer() {
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>        
       <ItemDetail
-          producto={item}
+        key={item.id}
+        producto={item}
       />
     </Box>
 );

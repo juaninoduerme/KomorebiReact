@@ -25,17 +25,13 @@ export const CartProvider = ({ children }) => {
         {
             const newCart = cart.map(cartItem => cartItem.id === item.id ? { ...cartItem, cantidad: cartItem.cantidad + quantity } : cartItem);
             setCart(newCart);
-            console.log("esta");
         } 
         else 
         {
             item.cantidad = quantity;
             const newCart = [...cart, item];
-            setCart(newCart);   
-            console.log("nuevo");         
+            setCart(newCart);         
         }
-
-        console.log(cart);
     };
 
     const removeItemInCart = (idItem) => {

@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
             return false;
     };
 
-    const addItemInCart = ({item, quantity}) => {
+    const addItemCart = ({item, quantity}) => {
         // busca item en el carrito ? actualiza la cantidad : agrega el item y su cantidad al carrito
 
         if (isInCart(item.id)) 
@@ -34,7 +34,7 @@ export const CartProvider = ({ children }) => {
         }
     };
 
-    const removeItemInCart = (idItem) => {
+    const removeItemCart = (idItem) => {
         // sacar item del carrito
         if (isInCart(idItem)) 
         {
@@ -48,18 +48,27 @@ export const CartProvider = ({ children }) => {
         setCart([]);
     };
 
-    const countItemsInCart = () => {
+    const countItemsCart = () => {
         // cuenta la cantidad de items que hay en el carrito
         const count = 0;
 
-        
+        cart.reduce((count, prod) => count + prod.cantidad, 0);
 
         return count;
     };
 
+    const totalPriceCart = () => {
+        // da el valor total del carrito
+        const precioTotal = 0;
+
+        precioTotal = cart.reduce((precioTotal, prod) => precioTotal + prod.cantidad * prod.precio, 0);
+
+        return precioTotal;
+    };
+
     return (
         <cartContext.Provider
-            value={{ cart, setCart, isInCart, addItemInCart, removeItemInCart, clearCart, countItemsInCart }}
+            value={{ cart, setCart, isInCart, addItemCart, removeItemCart, clearCart, countItemsCart, totalPriceCart }}
         >
             {children}
         </cartContext.Provider>

@@ -9,6 +9,7 @@ import NavBar from './components/navbar/navbar';
 import ItemListContainer from './components/body/itemlistcontainer';
 import ItemDetailContainer from './components/body/itemdetailcontainer';
 import Cart from './components/body/cart';
+import { CartProvider } from './contexts/cartcontext';
 
 //THEME
 const theme = createTheme({
@@ -29,13 +30,15 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>        
         <div className="App">
-          <NavBar/>
-          <Routes>
-            <Route exact path="/" element={<ItemListContainer/>}/>     
-            <Route path="/category/:id" element={<ItemListContainer/>}/>     
-            <Route path="/item/:id" element={<ItemDetailContainer/>}/>  
-            <Route path="/cart" element={<Cart/>}/>  
-          </Routes>
+          <CartProvider>
+            <NavBar/>
+            <Routes>
+              <Route exact path="/" element={<ItemListContainer/>}/>     
+              <Route path="/category/:id" element={<ItemListContainer/>}/>     
+              <Route path="/item/:id" element={<ItemDetailContainer/>}/>  
+              <Route path="/cart" element={<Cart/>}/>  
+            </Routes>
+          </CartProvider>
         </div>        
       </BrowserRouter>
     </ThemeProvider>

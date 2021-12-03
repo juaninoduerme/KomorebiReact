@@ -8,7 +8,8 @@
         "precio": 600,
         "descripcion": "Spray realizado con aceites esenciales, alcohol de cereal y agua mineral. Envase color ámbar de 250 ml.",
         "consejos": "Usalo donde quieras, es apto para usar en tela, ambientes y en tu propia piel.",
-        "stock": 20
+        "stock": 20,
+        "cantidad": 0
     },
   
     {
@@ -20,7 +21,8 @@
         "precio": 700,
         "descripcion": "Vela realizada con cera de soja y aceites esenciales en frasco de 200 ml con tapa blanca. Apta masajes.",
         "consejos": "Usar en lapsos de 4 horas. No soplar, apagar a través de falta de oxígeno usando su tapa o un apaga velas.",
-        "stock": 10
+        "stock": 10,
+        "cantidad": 0
     },
   
     {
@@ -32,7 +34,8 @@
         "precio": 500,
         "descripcion": "Bombones realizados con aceites esenciales y cera de soja, con formas inspiradas en la naturaleza.",
         "consejos": "El aceite que se forma al derretirse, al igual que el de la vela de soja, se puede usar para masajes.",
-        "stock": 5
+        "stock": 5,
+        "cantidad": 0
     },
 
     {
@@ -44,7 +47,8 @@
         "precio": 300,
         "descripcion": "Jabones naturales de 70 gr. realizados con aceites naturales, esenciales y productos agroecológicos.",
         "consejos": "Siempre dejalos drenar después de su uso para que duren más.",
-        "stock": 75
+        "stock": 75,
+        "cantidad": 0
     },
   
     {
@@ -56,6 +60,7 @@
         "precio": 400,
         "descripcion": "Bombas de baño para usar en tu bañera y hacer el baño más divertido y nutritivo de tu vida.",
         "consejos": "No sacar del empaque hasta que estés list@ para usarla.",
-        "stock": 50
+        "stock": 50,
+        "cantidad": 0
     }
 ]

@@ -35,7 +35,7 @@ const Item = ({producto}) => {
             </CardContent>
             <CardActions>
                 <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-                    <ItemCount stock={producto.stock} initial={initial} name={producto.nombre}/>
+                    <ItemCount initial={initial} producto={producto}/>
                     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>            
                         <Link to={`/item/${producto.id}`}>+ Info</Link>
                     </Box>

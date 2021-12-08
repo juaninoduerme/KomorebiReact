@@ -17,6 +17,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 //Import Componente
 import MenuKomorebi from './menu';
 import CartWidget from './cartwidget';
+import { useCart } from '../../contexts/cartcontext';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -59,6 +60,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
+
+  //context
+  const { countItemsCart } = useCart();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -122,8 +127,8 @@ export default function NavBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={17} color="error">
+        <IconButton size="large" color="inherit">
+          <Badge badgeContent={countItemsCart} color="secondary">
             <CartWidget/>
           </Badge>
         </IconButton>
@@ -179,9 +184,8 @@ export default function NavBar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
+                size="large"
+                color="inherit"
             >
               <CartWidget/>
             </IconButton>

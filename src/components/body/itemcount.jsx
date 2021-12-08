@@ -10,15 +10,14 @@ import swal from '@sweetalert/with-react';
 
 //imports propiois
 import { useCart } from '../../contexts/cartcontext';
-import { Container } from '@mui/material';
 
 const ItemCount = ({initial, producto}) => {
 
     const [stockDinamico, setStockDinamico] = useState(producto.stock);
     const [countItems, setCountItems] = useState(initial);
     
-    const { addItemCart } = useCart();
-
+    const { cart, addItemCart } = useCart();
+    
     const AddItem = () => {    
 
         const newCountItems = countItems + 1;
@@ -47,10 +46,7 @@ const ItemCount = ({initial, producto}) => {
                 icon: 'success',
                 text: `Se agregó ${countItems} unidad del producto ${producto.nombre} al carrito.`,
                 buttons: true,
-            });
-            addItemCart({item: producto, quantity: countItems});
-            setStockDinamico(stockDinamico - countItems);
-            setCountItems(initial);
+            });            
         }
         else
         {
@@ -58,11 +54,12 @@ const ItemCount = ({initial, producto}) => {
                 icon: 'success',
                 text: `Se agregó ${countItems} unidades del producto ${producto.nombre} al carrito.`,
                 buttons: true,
-            });
-            addItemCart({item: producto, quantity: countItems});            
-            setStockDinamico(stockDinamico - countItems);
-            setCountItems(initial);            
-        }     
+            });            
+        }    
+        
+        addItemCart({item: producto, quantity: countItems});
+        setStockDinamico(stockDinamico - countItems);
+        setCountItems(initial);        
     };
 
     return (

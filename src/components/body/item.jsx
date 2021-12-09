@@ -37,7 +37,7 @@ const Item = ({producto}) => {
                 <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                     <ItemCount initial={initial} producto={producto}/>
                     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>            
-                        <Link to={`/item/${producto.id}`}>+ Info</Link>
+                        <Link to={`/item/${producto.id}`} underline="none">+ Info</Link>
                     </Box>
                 </Box>
             </CardActions>

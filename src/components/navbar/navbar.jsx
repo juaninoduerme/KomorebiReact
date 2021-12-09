@@ -6,7 +6,6 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -17,7 +16,6 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 //Import Componente
 import MenuKomorebi from './menu';
 import CartWidget from './cartwidget';
-import { useCart } from '../../contexts/cartcontext';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -60,9 +58,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function NavBar() {
-
-  //context
-  const { countItemsCart } = useCart();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -128,9 +123,7 @@ export default function NavBar() {
     >
       <MenuItem>
         <IconButton size="large" color="inherit">
-          <Badge badgeContent={countItemsCart} color="secondary">
-            <CartWidget/>
-          </Badge>
+          <CartWidget/>
         </IconButton>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,6 +6,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Avatar from '@mui/material/Avatar';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 //imports propiois
 import { useCart } from '../../contexts/cartcontext';
@@ -33,32 +37,77 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Cart() {
 
-  const { cart, itemPriceCart } = useCart();
+  const { cart, removeItemCart, countItemsCart, itemPriceCart, totalPriceCart } = useCart();
 
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Producto</StyledTableCell>
-            <StyledTableCell align="right">Precio</StyledTableCell>
-            <StyledTableCell align="right">Cantidad</StyledTableCell>
-            <StyledTableCell align="right">Sub-Total</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {cart.map((item) => (
-            <StyledTableRow key={item.id}>
-              <StyledTableCell component="th" scope="row">
-                {item.imagen, item.nombre}
+  const onRemove = (idItem) => {
+      removeItemCart(idItem);
+  };
+  
+  return (    
+    <div>
+      {countItemsCart() > 0 ?
+        (<TableContainer component={Paper}>
+          <Table sx={{ width: "80%" }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>Producto</StyledTableCell>
+                <StyledTableCell></StyledTableCell>
+                <StyledTableCell align="right">Precio</StyledTableCell>
+                <StyledTableCell align="right">Cantidad</StyledTableCell>
+                <StyledTableCell align="right">Sub-Total</StyledTableCell>
+                <StyledTableCell align="right">Eliminar</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {cart.map((item) => (
+                <StyledTableRow key={item.id}>
+                  <StyledTableCell component="th" scope="row">
+                    <Avatar
+                      alt={item.alt}
+                      src={item.imagenMini}
+                      variant="square"
+                    />
+                  </StyledTableCell>
+                  <StyledTableCell component="th" scope="row">
+                    {item.nombre}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">{item.precio}</StyledTableCell>
+                  <StyledTableCell align="right">{item.cantidad}</StyledTableCell>
+                  <StyledTableCell align="right">{itemPriceCart(item.id)}</StyledTableCell>
+                  <StyledTableCell align="right" onClick={onRemove(item.id)}><DeleteIcon/></StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <Table sx={{ width: "80%" }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell align="right"></StyledTableCell>
+                <StyledTableCell align="right"></StyledTableCell>
+                <StyledTableCell align="right">Total</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <StyledTableCell align="right">
+                <Link to="/" underline="none">Volver</Link>
               </StyledTableCell>
-              <StyledTableCell align="right">{item.precio}</StyledTableCell>
-              <StyledTableCell align="right">{item.cantidad}</StyledTableCell>
-              <StyledTableCell align="right">{itemPriceCart(item.id)}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+              <StyledTableCell align="right">
+                <Link to="" underline="none">Terminar mi compra</Link>
+              </StyledTableCell>
+              <StyledTableCell align="right">{totalPriceCart()}</StyledTableCell>
+            </TableBody>
+          </Table>
+        </TableContainer>)  
+      :
+        (<Box sx={{ width: "50%", margin: "5% auto"}}>
+          <Typography variant="h3" component="div">
+            <Link to="/" underline="none">
+              Tu carrito está vacío (╯°□°)╯︵ ┻━┻ 
+              Volvé para llenarlo de productos ♥
+            </Link>
+          </Typography>
+        </Box>) 
+      }
+    </div>  
+    );
 }

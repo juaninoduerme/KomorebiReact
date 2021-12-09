@@ -64,14 +64,14 @@ const ItemCount = ({initial, producto}) => {
 
     return (
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-            <Box sx={{ height: '30px', width: '100%', display: 'flex', justifyContent: 'center' }}>
+            <Box sx={{ height: '30px', width: '100%', display: 'flex', margin: "5% auto" }}>
                 <RemoveCircleIcon onClick={RemoveItem}/>
                 <Input value={countItems}></Input>
                 <AddCircleIcon onClick={AddItem}/>        
             </Box>
             <Typography gutterBottom variant="caption" component="div">Stock: {stockDinamico}</Typography>
             <Button size="small" onClick={onAdd}>Añadir al Carrito</Button>
-            <Link to="/cart">Ir al Carrito</Link>
+            <Link to="/cart" underline="none">Ir al Carrito</Link>
         </Box>
     );
 }

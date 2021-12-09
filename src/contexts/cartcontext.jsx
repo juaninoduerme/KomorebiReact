@@ -5,6 +5,7 @@ const cartContext = createContext();
 export const useCart = () => useContext(cartContext);
 
 export const CartProvider = ({ children }) => {
+  
   const [cart, setCart] = useState([]);
 
   const isInCart = (idItem) => {
@@ -40,8 +41,6 @@ export const CartProvider = ({ children }) => {
 
         setCart(newCarts);
     }
-
-    console.log(`cart`, cart);
   };
 
   const removeItemCart = (idItem) => {

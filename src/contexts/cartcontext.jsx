@@ -41,6 +41,8 @@ export const CartProvider = ({ children }) => {
 
         setCart(newCarts);
     }
+
+    console.log("cart", cart);
   };
 
   const removeItemCart = (idItem) => {
@@ -58,21 +60,17 @@ export const CartProvider = ({ children }) => {
 
   const countItemsCart = () => {
     // cuenta la cantidad de items que hay en el carrito
-    const cantidadItems = cart.reduce((count, prod) => count + prod.cantidad, 0);
-    return cantidadItems;
+    return cart.reduce((count, prod) => count + prod.cantidad, 0);
   };
 
   const itemPriceCart = (idItem) => {
     // da el valor total de un item del carrito
-
     const item = cart.find(prod => prod.id === idItem);
-
     return item.precio * item.cantidad;
   };
 
   const totalPriceCart = () => {
     // da el valor total del carrito
-
     return cart.reduce(
       (precioTotal, prod) => precioTotal + prod.cantidad * prod.precio,
       0
@@ -90,7 +88,7 @@ export const CartProvider = ({ children }) => {
         clearCart,
         countItemsCart,
         itemPriceCart,
-        totalPriceCart,
+        totalPriceCart
       }}
     >
       {children}

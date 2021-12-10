@@ -11,6 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 //imports propiois
 import { useCart } from '../../contexts/cartcontext';
@@ -37,17 +38,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Cart() {
 
-  const { cart, removeItemCart, countItemsCart, itemPriceCart, totalPriceCart } = useCart();
+  const { cart, removeItemCart, countItemsCart, clearCart, totalPriceCart } = useCart();
+
+  const precioTotal = totalPriceCart();
 
   const onRemove = (idItem) => {
-      removeItemCart(idItem);
+      //removeItemCart(idItem);
   };
   
   return (    
     <div>
       {countItemsCart() > 0 ?
         (<TableContainer component={Paper}>
-          <Table sx={{ width: "80%" }} aria-label="customized table">
+          <Table sx={{ width: "100%" }} aria-label="customized table">
             <TableHead>
               <TableRow>
                 <StyledTableCell>Producto</StyledTableCell>
@@ -71,17 +74,22 @@ export default function Cart() {
                   <StyledTableCell component="th" scope="row">
                     {item.nombre}
                   </StyledTableCell>
-                  <StyledTableCell align="right">{item.precio}</StyledTableCell>
+                  <StyledTableCell align="right">${item.precio}</StyledTableCell>
                   <StyledTableCell align="right">{item.cantidad}</StyledTableCell>
-                  <StyledTableCell align="right">{itemPriceCart(item.id)}</StyledTableCell>
-                  <StyledTableCell align="right" onClick={onRemove(item.id)}><DeleteIcon/></StyledTableCell>
+                  <StyledTableCell align="right">{item.cantidad * item.precio}</StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Button size="small" onClick={onRemove(item.id)}>
+                      <DeleteIcon/>
+                    </Button>                  
+                  </StyledTableCell>
                 </StyledTableRow>
               ))}
             </TableBody>
           </Table>
-          <Table sx={{ width: "80%" }} aria-label="customized table">
+          <Table sx={{ width: "100%" }} aria-label="customized table">
             <TableHead>
               <TableRow>
+                <StyledTableCell align="right"></StyledTableCell>
                 <StyledTableCell align="right"></StyledTableCell>
                 <StyledTableCell align="right"></StyledTableCell>
                 <StyledTableCell align="right">Total</StyledTableCell>
@@ -92,9 +100,14 @@ export default function Cart() {
                 <Link to="/" underline="none">Volver</Link>
               </StyledTableCell>
               <StyledTableCell align="right">
-                <Link to="" underline="none">Terminar mi compra</Link>
+                <Button size="small">
+                  Vaciar Carrito
+                </Button>                  
               </StyledTableCell>
-              <StyledTableCell align="right">{totalPriceCart()}</StyledTableCell>
+              <StyledTableCell align="right">
+                <Link to="/" underline="none">Terminar mi compra</Link>
+              </StyledTableCell>
+              <StyledTableCell align="right">${precioTotal}</StyledTableCell>
             </TableBody>
           </Table>
         </TableContainer>)  

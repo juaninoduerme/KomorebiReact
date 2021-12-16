@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 
 //imports propios
-import getProducts from "../../services/promesaitems";
 import ItemList from "./itemlist";
 import { useParams } from "react-router-dom";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 
 export default function ItemListContainer() {
   
@@ -13,20 +13,36 @@ export default function ItemListContainer() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProducts
-      .then((response) => {
-        id === undefined || id === null
-          ? setProducts(response)
-          : setProducts(
-              response.filter((prod) => prod.categoria == parseInt(id))
-            );
-      })
-      .catch((error) => {
-        console.log("Pasaron cosas....", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const db = getFirestore();
+
+    const productosRef = collection(db, "items");
+    let queryAux;
+
+    console.log("id", id);
+    if(id === undefined || id === null)
+    {
+      queryAux = query(
+        productosRef
+      );
+    }
+    else
+    {
+      queryAux = query(
+        productosRef,
+        where("categoria", "==", parseInt(id))
+      );      
+    }   
+    
+    getDocs(queryAux).then((snapshot) => {
+      setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    })
+    .catch((error) => {
+      console.log("Oops! I did it again D:", error);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+
   }, [id]);
 
   return (

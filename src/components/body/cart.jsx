@@ -76,9 +76,9 @@ export default function Cart() {
                   </StyledTableCell>
                   <StyledTableCell align="right">${item.precio}</StyledTableCell>
                   <StyledTableCell align="right">{item.cantidad}</StyledTableCell>
-                  <StyledTableCell align="right">{item.cantidad * item.precio}</StyledTableCell>
+                  <StyledTableCell align="right">${item.cantidad * item.precio}</StyledTableCell>
                   <StyledTableCell align="right">
-                    <Button size="small" onClick={onRemove(item.id)}>
+                    <Button size="small" onClick={() =>removeItemCart(item.id)}>
                       <DeleteIcon/>
                     </Button>                  
                   </StyledTableCell>
@@ -100,7 +100,7 @@ export default function Cart() {
                 <Link to="/" underline="none">Volver</Link>
               </StyledTableCell>
               <StyledTableCell align="right">
-                <Button size="small">
+                <Button size="small" onClick={() =>clearCart()}>
                   Vaciar Carrito
                 </Button>                  
               </StyledTableCell>

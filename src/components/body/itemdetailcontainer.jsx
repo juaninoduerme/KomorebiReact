@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 //imports propios
 import ItemDetail from './itemdetail';
-import getProducts from '../../services/promesaitems';
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 export default function ItemDetailContainer() {  
 
@@ -12,8 +12,18 @@ export default function ItemDetailContainer() {
   const [item, setItem] = useState([]);
 
   useEffect(() => {
-    getProducts 
-    .then((response) => {setItem(response.find((prod) => prod.id == parseInt(id)))})
+
+    if(id !== undefined || id !== null)
+    {
+      const db = getFirestore();
+
+      const prodKomorebiRef = doc(db, "items", id);
+      getDoc(prodKomorebiRef).then((snapshot) => {
+        if (snapshot.exists()) {
+          setItem({ ...snapshot.data(), id: snapshot.id });
+        }
+      });
+    }
   }, [id]);  
 
   console.log(item);

@@ -10,8 +10,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Fjalla One', sans-serif !important; 
 }
 
 .links {
@@ -21,4 +20,19 @@ code {
   text-decoration: none;
   color: #f9f2e7;
   margin: auto 5%;
+}
+
+.titulos {
+  font-family: 'Fjalla One', sans-serif !important;
+  font-size: 25px;
+  width: 100%; 
+  text-decoration: none;
+  color: #01baef;
+  margin: auto 3%;
+}
+
+.titulo {
+  font-family: 'Fjalla One', sans-serif !important;
+  color: #f9f2e7;
+  margin: auto 3%;
 }

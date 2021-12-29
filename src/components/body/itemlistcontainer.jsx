@@ -8,7 +8,10 @@ import { collection, getDocs, getFirestore, query, where } from "firebase/firest
 
 export default function ItemListContainer() {
   
+  //variables
   const { id } = useParams();
+
+  //hooks
   const [products, setProducts] = useState(undefined);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +21,6 @@ export default function ItemListContainer() {
     const productosRef = collection(db, "items");
     let queryAux;
 
-    console.log("id", id);
     if(id === undefined || id === null)
     {
       queryAux = query(

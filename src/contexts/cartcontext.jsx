@@ -41,8 +41,6 @@ export const CartProvider = ({ children }) => {
 
         setCart(newCarts);
     }
-
-    console.log("cart", cart);
   };
 
   const removeItemCart = (idItem) => {

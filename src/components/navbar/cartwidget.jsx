@@ -15,7 +15,7 @@ export default function CartWidget() {
     <Box sx={{ width: '100%' }}>
       <Badge badgeContent={countItemsCart()} color="secondary">
         <Link to={`/cart`}>
-          <ShoppingCartIcon/>
+          <ShoppingCartIcon sx={{ color: "#f9f2e7" }}/>
         </Link>        
       </Badge>
     </Box>

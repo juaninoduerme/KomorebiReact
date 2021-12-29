@@ -9,6 +9,7 @@ import NavBar from './components/navbar/navbar';
 import ItemListContainer from './components/body/itemlistcontainer';
 import ItemDetailContainer from './components/body/itemdetailcontainer';
 import Cart from './components/body/cart';
+import FinishOrder from './components/body/finishorder';
 import { CartProvider } from './contexts/cartcontext';
 
 //THEME
@@ -36,7 +37,8 @@ function App() {
               <Route exact path="/" element={<ItemListContainer/>}/>     
               <Route path="/category/:id" element={<ItemListContainer/>}/>     
               <Route path="/item/:id" element={<ItemDetailContainer/>}/>  
-              <Route path="/cart" element={<Cart/>}/>  
+              <Route path="/cart" element={<Cart/>}/> 
+              <Route path="/finishorder" element={<FinishOrder/>}/>  
             </Routes>
           </CartProvider>
         </div>        

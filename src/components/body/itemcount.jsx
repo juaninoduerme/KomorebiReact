@@ -13,11 +13,14 @@ import { useCart } from '../../contexts/cartcontext';
 
 const ItemCount = ({initial, producto}) => {
 
+    //context
+    const { cart, addItemCart } = useCart();
+
+    //hooks
     const [stockDinamico, setStockDinamico] = useState(producto.stock);
     const [countItems, setCountItems] = useState(initial);
     
-    const { cart, addItemCart } = useCart();
-    
+    //funciones    
     const AddItem = () => {    
 
         const newCountItems = countItems + 1;

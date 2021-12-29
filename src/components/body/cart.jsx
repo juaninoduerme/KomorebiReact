@@ -38,13 +38,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function Cart() {
 
+  //context
   const { cart, removeItemCart, countItemsCart, clearCart, totalPriceCart } = useCart();
 
+  //variables
   const precioTotal = totalPriceCart();
-
-  const onRemove = (idItem) => {
-      //removeItemCart(idItem);
-  };
   
   return (    
     <div>
@@ -105,7 +103,7 @@ export default function Cart() {
                 </Button>                  
               </StyledTableCell>
               <StyledTableCell align="right">
-                <Link to="/" underline="none">Terminar mi compra</Link>
+                <Link to="/finishorder" underline="none">Terminar mi compra</Link>
               </StyledTableCell>
               <StyledTableCell align="right">${precioTotal}</StyledTableCell>
             </TableBody>

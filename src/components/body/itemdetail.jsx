@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 
 const ItemDetail = ({producto}) => {
 
+    //hooks
     const [initial, setInitial] = useState(1);
 
     return (

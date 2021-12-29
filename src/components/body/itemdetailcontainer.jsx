@@ -8,7 +8,10 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 export default function ItemDetailContainer() {  
 
+  //variables
   const {id} = useParams();
+
+  //hooks
   const [item, setItem] = useState([]);
 
   useEffect(() => {
@@ -25,8 +28,6 @@ export default function ItemDetailContainer() {
       });
     }
   }, [id]);  
-
-  console.log(item);
 
   return (
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>        
